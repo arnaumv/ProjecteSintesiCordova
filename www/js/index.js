@@ -33,14 +33,14 @@ window.addEventListener('resize', function() {
     var liElements = document.querySelectorAll('.liHeader');
     var footer = document.querySelector('[data-role="footer"]');
 
-    if (width >= 1024) {
+    if (width >= 540) {
         // Si la pantalla es grande, muestra los elementos
         liElements.forEach(function(li) {
             li.classList.remove('hidden');
         });
         // Y oculta el footer
         footer.classList.add('hidden');
-    } else if (width <= 500) {
+    } else if (width <= 540) {
         // Si la pantalla es pequeña (500px o menos), oculta los elementos
         liElements.forEach(function(li) {
             li.classList.add('hidden');

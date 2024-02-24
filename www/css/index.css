@@ -60,21 +60,35 @@ body {
     }
 }
 
+
+
+
+
+/* ---------------------------------------------------- */
+
+/* FOOTER */
+
+/* Estilos para el elemento con el atributo data-role="footer" */
 [data-role="footer"] {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    position: fixed; /* Posiciona el footer de manera fija en la pantalla */
+    bottom: 0; /* Alinea el footer en la parte inferior de la pantalla */
+    width: 100%; /* Hace que el footer tenga el ancho completo de su contenedor */
     z-index: 1000; /* Esto asegura que el footer se muestre por encima de otros elementos de la página */
 }
+
+/* Cuando el footer tiene la clase "hidden", se oculta */
 [data-role="footer"].hidden {
-    display: none !important;
+    display: none !important; /* Oculta el footer */
 }
-@media (max-width: 1024px) {
+
+/* Cuando la pantalla tiene un ancho máximo de 500px, y el footer tiene la clase "hidden", se muestra */
+@media (max-width: 540px) {
     [data-role="footer"].hidden {
-        display: block !important;
+        display: block !important; /* Muestra el footer */
     }
 }
 
+/* ---------------------------------------------------- */
 
 
 h1 {
@@ -149,15 +163,22 @@ h2 {
 
 
 /* ---------------------------------------------------- */
-/* OCULTAR ELEMENTOS CON "HIDDEN" CUANDO PANTALLA SEA DE 1024  */
+/* OCULTAR ELEMENTOS CON "HIDDEN" CUANDO PANTALLA SEA DE 1024px  */
+
+/* Por defecto, los elementos con la clase "hidden" están ocultos */
 .hidden {
-    display: none;
+    display: none; /* Oculta el elemento */
 }
+
+/* Cuando la pantalla tiene un ancho mínimo de 1024px, los elementos con la clase "hidden" se muestran */
 @media (min-width: 1024px) {
     .hidden {
-        display: block !important;
+        display: block !important; /* Muestra el elemento */
     }
 }
+/* ---------------------------------------------------- */
+
+
 
 /* ---------------------------------------------------- */
 /* HEADER.PHP */
@@ -206,67 +227,86 @@ h2 {
         margin-right: 1100px;
     }
 
+        
+    .imgHeader:hover {
+        transition-duration: 3s;
+        transform: scale(1.4); /* Cambiado de rotate(360deg) a scale(1.2) */
+    }
+
+    .h1Header {
+        margin-left: 30px;
+        margin-bottom: -5px;
+        font-family: 'Playfair Display', serif;
+        font-size: 25px;
+        color: #EDF2F4;
+    }
+
+    /*.ulHeader,
+    .liHeader {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        margin-right: 30px;
+    } */
+
+    .ulHeader {
+        list-style-type: none;
+        margin: 0;
+        font-family: 'Lato', sans-serif;
+
+        padding: 0;
+        display: flex;
+        align-items: center; /* Alinea verticalmente los elementos del menú con la imagen */
+    }
+
+    .liHeader {
+        margin-right: 20px; /* Ajusta el margen entre elementos del menú */
+    }
+
+    .liHeader:last-child {
+        margin-right: 0; /* Quita el margen derecho del último elemento del menú */
+    }
+    .liHeader a {
+        text-decoration: none;
+        color: #EDF2F4;
+        opacity: 0.8;
+        transition: color 1s, opacity 0.5s;
+    }
+
+    .liHeader a:hover {
+        color: white;
+        opacity: 1;
+    }
+
+    .userImage {
+        width: 40px; /* Ajusta como necesites */
+        height: 40px; /* Asegúrate de que sea igual al ancho para mantener la imagen redonda */
+        border-radius: 50%; /* Hace la imagen redonda */
+        margin-left: 10px; /* Añade espacio a la izquierda de la imagen */
+    }
+
+}
+
+/* ---------------------------------------------------- */
+/* Cuando la pantalla tiene un ancho máximo de 540px, oculta los elementos */
+@media (max-width: 540px) {
     
-.imgHeader:hover {
-    transition-duration: 3s;
-    transform: scale(1.4); /* Cambiado de rotate(360deg) a scale(1.2) */
+    .h1Header,
+    .ulHeader,
+    .liHeader,
+    .liHeader:last-child,
+    .liHeader a,
+    .liHeader a:hover,
+    .userImage {
+        display: none;
+    }
 }
-
-.h1Header {
-    margin-left: 30px;
-    margin-bottom: -5px;
-    font-family: 'Playfair Display', serif;
-    font-size: 25px;
-    color: #EDF2F4;
-}
-
-/*.ulHeader,
-.liHeader {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    margin-right: 30px;
-} */
-
-.ulHeader {
-    list-style-type: none;
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-
-    padding: 0;
-    display: flex;
-    align-items: center; /* Alinea verticalmente los elementos del menú con la imagen */
-}
-
-.liHeader {
-    margin-right: 20px; /* Ajusta el margen entre elementos del menú */
-}
-
-.liHeader:last-child {
-    margin-right: 0; /* Quita el margen derecho del último elemento del menú */
-}
-.liHeader a {
-    text-decoration: none;
-    color: #EDF2F4;
-    opacity: 0.8;
-    transition: color 1s, opacity 0.5s;
-}
-
-.liHeader a:hover {
-    color: white;
-    opacity: 1;
-}
-
-.userImage {
-    width: 40px; /* Ajusta como necesites */
-    height: 40px; /* Asegúrate de que sea igual al ancho para mantener la imagen redonda */
-    border-radius: 50%; /* Hace la imagen redonda */
-    margin-left: 10px; /* Añade espacio a la izquierda de la imagen */
-}
+/* ---------------------------------------------------- */
 
 
 
-}
+
+
 /* ---------------------------------------------------- */
 /* INDEX.PHP */
 .bodyIndex {
