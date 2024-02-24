@@ -1,0 +1,515 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    background-image:linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%);
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    font-size:12px;
+    height:100vh;
+    margin:0px;
+    padding:0px;
+    /* Padding to avoid the "unsafe" areas behind notches in the screen */
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    width:100%;
+}
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+[data-role="footer"] {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; /* Esto asegura que el footer se muestre por encima de otros elementos de la página */
+}
+[data-role="footer"].hidden {
+    display: none !important;
+}
+@media (max-width: 1024px) {
+    [data-role="footer"].hidden {
+        display: block !important;
+    }
+}
+
+
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+#deviceready.ready .event.listening { display: none; }
+#deviceready.ready .event.received { display: block; }
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+
+@media screen and (prefers-color-scheme: dark) {
+    body {
+        background-image:linear-gradient(to bottom, #585858 0%, #1B1B1B 51%);
+    }
+}
+
+.small-image {
+    width: 37px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+h2 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #3a3f47;
+    font-size: 30px;
+    text-align: center;
+   /* padding-left: 410px; /* Añadido para agregar espacio a la izquierda */
+}
+
+#mapa {
+    border-radius: 15px; /* Ajusta este valor según tus necesidades */
+}
+
+.bodyIndex {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ---------------------------------------------------- */
+/* OCULTAR ELEMENTOS CON "HIDDEN" CUANDO PANTALLA SEA DE 1024  */
+.hidden {
+    display: none;
+}
+@media (min-width: 1024px) {
+    .hidden {
+        display: block !important;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* HEADER.PHP */
+.contenedorHeader {
+    width: 100%;
+    padding: 24px 0;
+    background-color: rgba(43, 45, 66, 0.9);
+    color: #EDF2F4;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center; /* Añadido para centrar los elementos en el contenedor */
+
+    transition: transform 0.1s ease;
+    z-index: 9999;
+}
+
+.imgHeader {
+    width: 120px; 
+}
+
+.imgHeader:hover {
+    transition-duration: 3s;
+    transform: scale(1.4); /* Cambiado de rotate(360deg) a scale(1.2) */
+}
+
+.userImage {
+    width: 40px; /* Ajusta como necesites */
+    height: 40px; /* Asegúrate de que sea igual al ancho para mantener la imagen redonda */
+    border-radius: 50%; /* Hace la imagen redonda */
+    margin-left: 10px; /* Añade espacio a la izquierda de la imagen */
+}
+
+
+/* Estilos para pantallas de PC */
+@media (min-width: 1024px) {
+    .contenedorHeader {
+        padding: 27px 0 19px 200px;
+        justify-content: flex-start;
+    }
+
+    .imgHeader {
+        margin-right: 1100px;
+    }
+
+    
+.imgHeader:hover {
+    transition-duration: 3s;
+    transform: scale(1.4); /* Cambiado de rotate(360deg) a scale(1.2) */
+}
+
+.h1Header {
+    margin-left: 30px;
+    margin-bottom: -5px;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    color: #EDF2F4;
+}
+
+/*.ulHeader,
+.liHeader {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-right: 30px;
+} */
+
+.ulHeader {
+    list-style-type: none;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+
+    padding: 0;
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos del menú con la imagen */
+}
+
+.liHeader {
+    margin-right: 20px; /* Ajusta el margen entre elementos del menú */
+}
+
+.liHeader:last-child {
+    margin-right: 0; /* Quita el margen derecho del último elemento del menú */
+}
+.liHeader a {
+    text-decoration: none;
+    color: #EDF2F4;
+    opacity: 0.8;
+    transition: color 1s, opacity 0.5s;
+}
+
+.liHeader a:hover {
+    color: white;
+    opacity: 1;
+}
+
+.userImage {
+    width: 40px; /* Ajusta como necesites */
+    height: 40px; /* Asegúrate de que sea igual al ancho para mantener la imagen redonda */
+    border-radius: 50%; /* Hace la imagen redonda */
+    margin-left: 10px; /* Añade espacio a la izquierda de la imagen */
+}
+
+
+
+}
+/* ---------------------------------------------------- */
+/* INDEX.PHP */
+.bodyIndex {
+    margin: 0;
+    padding: 0;
+}
+
+.bodyIndex .imagenCabecera {
+    padding: 200px;
+    background-image: url("../img/BANNER1.png");
+}
+
+.imagenCabecera h1 {
+    margin-bottom: -30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    color: #EDF2F4;
+    text-align: center;
+}
+
+.imagenCabecera h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 30px;
+    color: #EDF2F4;
+    text-align: center;
+}
+
+.bodyIndex p {
+    font-family: 'Lato', sans-serif;
+    font-size: 23px;
+    /*color: #EDF2F4;*/
+    text-align: center;
+}
+.circulosExplicativos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.circulosExplicativos div {
+    text-align: center;
+    width: 300px;
+}
+
+.circulosExplicativos img {
+    width: 300px;
+    height: 300px;
+    border: 4px solid rgba(59, 78, 94, 0.589); /* Color de borde fijo */
+    border-radius: 50%;
+    margin-top: 150px;
+    box-shadow: 0 0 5px rgba(99, 145, 148, 0.9), 0 0 10px rgba(102, 105, 146, 0.9); /* Iluminación fija */
+}
+
+/* Reducir el tamaño de las imágenes en pantallas más pequeñas */
+@media (max-width: 768px) {
+    .circulosExplicativos img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.circulosExplicativos p {
+    margin: 10px 0 150px 0;
+    text-align: center;
+    color: #2B2D42;
+    overflow: visible;
+    white-space: normal;
+    width: 100%;
+}
+
+.cuadradoExplicativos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; /* Agregado para centrar el contenido */
+}
+.circulosExplicativos p {
+    margin: 10px 0 150px 0;
+    text-align: center;
+    color: #2B2D42;
+    overflow: visible;
+    white-space: normal;
+    width: 100%;
+}
+
+.cuadradoExplicativos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; /* Agregado para centrar el contenido */
+    
+}
+
+.cuadradoExplicativos div {
+    text-align: center;
+    width: 300px;
+    margin: 10px 35px; /* Aumentado el margen a los lados */
+}
+
+.cuadradoExplicativos img {
+    width: 280px;
+    height: 280px;
+    border-radius: 20%; /* Cambiado de 50% a 20% */
+    margin-top: 100px;
+    box-shadow: 0 0 5px rgba(99, 145, 148, 0.9), 0 0 10px rgba(102, 105, 146, 0.9); /* Iluminación fija */
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Agregado para suavizar el zoom, el cambio de color y el sombreado */
+}
+
+.cuadradoExplicativos img:hover {
+    transform: scale(1.1); /* Zoom al pasar el puntero */
+    filter: brightness(1.1); /* Color más nítido al pasar el puntero */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.726); /* Sombreado 3D al pasar el puntero */
+}
+
+.cuadradoExplicativos p {
+    margin: 10px 0 150px 0;
+    text-align: center;
+    color: #2B2D42;
+    overflow: visible;
+    white-space: normal;
+    width: 100%;
+}
+
+
+.separador {
+    border-top: 1px solid #000; /* Cambia el color según tus necesidades */
+    width: 58%; /* Reducido al 80% para dejar espacio en los lados */
+    margin: 20px auto; /* Centrado y ajustado el margen según tus necesidades */
+}
+
+#mapa {
+    width: 100%;
+    height: 600px; /* Ajusta la altura según tus preferencias */
+}
+
+.contenedorInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 150px 0;
+}
+
+.imgExplicativo {
+    width: 1500px;
+    height: 400px;
+    margin-right: -50px;
+    border: 3px solid #2B2D42;
+    border-left: none;
+    z-index: 99;
+}
+
+.textoExplicativo {
+   /* padding: 20px 70px 0 70px; */
+   /* background-color: #2B2D42; */
+   
+}
+
+.textoExplicativo p {
+    font-size: 30px !important; /* Aumentado de 20px a 30px */
+    color: white;
+    text-align: left;
+}
+
+#buttontextoExplicativo {
+    background: linear-gradient(45deg, #EF233C 50%, #D80032 50%);
+    background-size: 200% 200%;
+    background-position: 100%;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    color: #EDF2F4;
+    transition: background-position 1s, color 1s;
+    margin-left: 348px;
+    display: inline-block;
+}
+
+#buttontextoExplicativo:hover {
+    background-position: 0%;
+    color: #EDF2F4;
+}
+
+.textoFinal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.textoFinal h2 {
+    text-align: center;
+    line-height: 45px;
+    font-size: 45px !important;
+}
+
+.textoFinal p {
+    text-align: center;
+    line-height: 20px;
+    font-size: 17px !important;
+}
+
+.textoFinal h2 {
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    color: #8D99AE;
+}
+
+.textoFinal p {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    color: #2B2D42;
+    text-align: center;
+}
+
+#buttonFinalIndex {
+    background: linear-gradient(45deg, #EF233C 50%, #D80032 50%);
+    background-size: 200% 200%;
+    background-position: 100%;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 150px;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    color: #EDF2F4;
+    transition: background-position 1s, color 1s;
+}
+
+#buttonFinalIndex:hover {
+    background-position: 0%;
+    color: #EDF2F4;
+}
+
+.contenedorTexto {
+    margin: 0 150px; /* Agrega margen a ambos lados */
+    padding: 10px 0 50px 0;
+    /*background-color: #2B2D42;  */
+    border-radius: 10px; /* Redondea las esquinas */
+}

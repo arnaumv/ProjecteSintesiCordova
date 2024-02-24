@@ -1,0 +1,197 @@
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+            https://cordova.apache.org/docs/en/latest/
+        Some notes:
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+       <!-- <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; data: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+       
+		<style>
+			/* For avoiding title truncation in wp8 */
+			.ui-header .ui-title {
+				overflow: visible !important;
+			}
+			/* For fixing the absolute position issue for the default cordova gen page*/
+			#cjp-accordion1 .app {
+				left: 5px !important;
+				margin: 5px !important;
+				position: relative !important;
+			}
+		/* Ocultar scrollbar para Chrome, Safari and Opera */
+		[data-role="page"]::-webkit-scrollbar {
+			display: none;
+		}
+		/* Ocultar scrollbar para IE, Edge and Firefox */
+		[data-role="page"] {
+			-ms-overflow-style: none;  /* IE and Edge */
+			scrollbar-width: none;  /* Firefox */
+		}
+					</style>
+
+
+
+<script>
+	$(function(){
+		$("#header").load("header.html"); 
+	});
+</script>
+
+        <title>Hello World</title>
+
+
+		
+    </head>
+    <body class="bodyIndex">
+		<!-- page 1 -->
+		<div data-role="page" id="page1">
+			<div id="header"></div>
+
+			
+			
+			<div class="contenedor">
+				<div class="imagenCabecera">
+					<h1></h1>
+					<h2></h2>
+				</div>
+				<div class="circulosExplicativos">
+					<div>
+						<img src="img/imagenIndex1.png" alt="Imagen 1">
+						<p>Mantente activo y conectado a través del deporte. </p>
+					</div>
+			
+					<div>
+						<img src="img/imagenIndex2.png" alt="Imagen 2">
+						<p>Organiza y unete a eventos deportivos locales.</p>
+					</div>
+			
+					<div>
+						<img src="img/imagenIndex3.png" alt="Imagen 3">
+						<p>Conoce a personas con intereses similares.</p>
+					</div>
+				</div>
+
+				<div class="contenedorInfo">
+
+					<div class="contenedorTexto">
+						 <p class="textoExplicativo">¿Eres un apasionado del deporte y buscas compañeros para jugar? ¡Nuestra plataforma es la solución perfecta para ti! Con nosotros, puedes crear eventos para torneos de fútbol, baloncesto, tenis mesa y mucho más. Solo tienes que establecer la fecha, el lugar y el deporte, y otros usuarios podrán unirse a tu evento. ¡Nunca ha sido tan fácil organizar partidos y encontrar compañeros de juego! Únete a nuestra comunidad y lleva tu pasión por el deporte al siguiente nivel<br></p>
+						 
+					 </div>
+				 </div>
+				 <h2>Descubre eventos deportivos</h2>
+				 <hr class="separador"> <!-- Línea separadora -->
+				
+				 <div class="cuadradoExplicativos">
+					 <div>
+						 <img src="img/pelotaFutbol.png"  alt="Imagen 1">
+						
+					 </div>
+		 
+					 <div>
+						 <img src="img/pelotaBasquet.png" alt="Imagen 2">
+						 
+					 </div>
+		 
+					 <div>
+						 <img src="img/PingPong.png" alt="Imagen 3">
+						 
+					 </div>
+		 
+					 
+				 </div>
+		 
+				 <div class="cuadradoExplicativos">
+					 <div>
+						 <img src="img/Gimnasio.png"  alt="Imagen 1">
+						
+					 </div>
+		 
+					 <div>
+						 <img src="img/Tenis.png" alt="Imagen 2">
+						 
+					 </div>
+		 
+					 <div>
+						 <img src="img/Padel.png" alt="Imagen 3">
+						 
+					 </div>
+		 
+					 
+				 </div>
+
+				 
+
+			</div>
+
+			<br><br><br><br><br><br><br><br><br><br><br>
+			<h2>Eventos cerca de ti</h2>
+	
+			<hr class="separador"> <!-- Línea separadora -->
+			<br><br><br><br><br><br>
+	
+			<div class="textoFinal">
+				<div id="mapa"></div> 
+				<br><br><br><br><br>
+				<h2>¡Únete a la comunidad!</h2>    
+				<p>La organización de eventos deportivos nunca ha sido tan fácil. ¿Quieres organizar un partido de fútbol el próximo fin de semana en tu área? ¡Solo tienes que crear un evento en nuestra plataforma y invitar a otros a unirse! ¿O prefieres unirte a un partido de baloncesto en el parque cercano? ¡Busca eventos cercanos y únete a la diversión!</p>
+				<a id="buttonFinalIndex" href="#">Comienza a crear</a>
+			</div>
+			
+			<div id="footer"></div>
+			
+			<script>
+				
+				// Map initialization script
+				var json_url = "ubicacion.json";
+			
+				var map = L.map('mapa').setView([41.357805, 2.0379357], 13);
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
+				fetch(json_url)
+					.then(response => response.json())
+					.then(data => {
+						if (data.locations && data.locations.length > 0) {
+							data.locations.forEach(ubicacion => {
+								var marker = L.marker([ubicacion.ubicacion.latitude, ubicacion.ubicacion.longitude]).addTo(map);
+								var actividades = ubicacion.actividad.join(', '); // Join the activities into a single string separated by commas
+								marker.bindPopup('<b>' + ubicacion["nombre de ubicacion"] + '</b><br><b>Actividad:</b> ' + actividades);
+							});
+						}
+					});
+			</script>
+	
+			
+			
+			
+	<div data-role="footer" data-position="fixed" class="hidden">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page1" class="ui-btn-active ui-state-persist"><img class="small-image" src="img/inicio.png" alt="Page 1"></a></li>
+				<li><a href="page2.html"><img class="small-image" src="img/agregar.png" alt="Page 2"></a></li>
+				<li><a href="#page3"><img class="small-image" src="img/usuario.png" alt="Page 3"></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+
+				
+<script src="cordova.js"></script><script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script><script type="text/javascript" id="jqm-trans-disable">
+		/* For having a faster transition */
+		$(document).on("mobileinit", function() {
+				$.mobile.defaultPageTransition = "none";
+				$.mobile.defaultDialogTransition = "none";
+		});
+		</script><script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script><script src="js/index.js"></script></body>
+</html>
