@@ -62,35 +62,6 @@ body {
 
 
 
-
-
-/* ---------------------------------------------------- */
-
-/* FOOTER */
-
-/* Estilos para el elemento con el atributo data-role="footer" */
-[data-role="footer"] {
-    position: fixed; /* Posiciona el footer de manera fija en la pantalla */
-    bottom: 0; /* Alinea el footer en la parte inferior de la pantalla */
-    width: 100%; /* Hace que el footer tenga el ancho completo de su contenedor */
-    z-index: 1000; /* Esto asegura que el footer se muestre por encima de otros elementos de la página */
-}
-
-/* Cuando el footer tiene la clase "hidden", se oculta */
-[data-role="footer"].hidden {
-    display: none !important; /* Oculta el footer */
-}
-
-/* Cuando la pantalla tiene un ancho máximo de 500px, y el footer tiene la clase "hidden", se muestra */
-@media (max-width: 540px) {
-    [data-role="footer"].hidden {
-        display: block !important; /* Muestra el footer */
-    }
-}
-
-/* ---------------------------------------------------- */
-
-
 h1 {
     font-size:24px;
     font-weight:normal;
@@ -139,6 +110,35 @@ h1 {
     }
 }
 
+
+
+/* ----------------------------------------------------------- */
+/*********************** FOOTER CORDOVA************************/
+
+/* Estilos para el elemento con el atributo data-role="footer" */
+[data-role="footer"] {
+    position: fixed; /* Posiciona el footer de manera fija en la pantalla */
+    bottom: 0; /* Alinea el footer en la parte inferior de la pantalla */
+    width: 100%; /* Hace que el footer tenga el ancho completo de su contenedor */
+    z-index: 1000; /* Esto asegura que el footer se muestre por encima de otros elementos de la página */
+}
+
+/* Cuando el footer tiene la clase "hidden", se oculta */
+[data-role="footer"].hidden {
+    display: none !important; /* Oculta el footer */
+}
+
+/* Cuando la pantalla tiene un ancho máximo de 500px, y el footer tiene la clase "hidden", se muestra */
+@media (max-width: 540px) {
+    [data-role="footer"].hidden {
+        display: block !important; /* Muestra el footer */
+    }
+}
+
+/* ---------------------------------------------------- */
+
+
+
 .small-image {
     width: 37px; /* Adjust as needed */
     height: auto; /* Maintain aspect ratio */
@@ -162,7 +162,7 @@ h2 {
 }
 
 
-/* ---------------------------------------------------- */
+/* -------------------------------------------------------------- */
 /* OCULTAR ELEMENTOS CON "HIDDEN" CUANDO PANTALLA SEA DE 1024px  */
 
 /* Por defecto, los elementos con la clase "hidden" están ocultos */
@@ -176,15 +176,15 @@ h2 {
         display: block !important; /* Muestra el elemento */
     }
 }
+
+
+
+
 /* ---------------------------------------------------- */
-
-
-
-/* ---------------------------------------------------- */
-/* HEADER.PHP */
+/********************* HEADER.PHP **********************/
 .contenedorHeader {
     width: 100%;
-    padding: 24px 0;
+    padding: 23px 0;
     background-color: rgba(43, 45, 66, 0.9);
     color: #EDF2F4;
     display: flex;
@@ -193,7 +193,7 @@ h2 {
     top: 0;
     left: 0;
     align-items: center;
-    justify-content: center; /* Añadido para centrar los elementos en el contenedor */
+    justify-content: center;
 
     transition: transform 0.1s ease;
     z-index: 9999;
@@ -205,19 +205,20 @@ h2 {
 
 .imgHeader:hover {
     transition-duration: 3s;
-    transform: scale(1.4); /* Cambiado de rotate(360deg) a scale(1.2) */
+    transform: scale(1.4); 
 }
 
 .userImage {
-    width: 40px; /* Ajusta como necesites */
-    height: 40px; /* Asegúrate de que sea igual al ancho para mantener la imagen redonda */
-    border-radius: 50%; /* Hace la imagen redonda */
-    margin-left: 10px; /* Añade espacio a la izquierda de la imagen */
+    width: 40px;
+    height: 40px; 
+    border-radius: 50%; 
+    margin-left: 10px; 
 }
 
 
-/* Estilos para pantallas de PC */
-@media (min-width: 1024px) {
+/* ----------------------------------------------------------------------------- */
+/********************** ESTILOS PARA UNA PANTALLA DE PC *************************/
+@media (min-width: 540px) {
     .contenedorHeader {
         padding: 27px 0 19px 200px;
         justify-content: flex-start;
@@ -227,7 +228,6 @@ h2 {
         margin-right: 1100px;
     }
 
-        
     .imgHeader:hover {
         transition-duration: 3s;
         transform: scale(1.4); /* Cambiado de rotate(360deg) a scale(1.2) */
@@ -237,40 +237,33 @@ h2 {
         margin-left: 30px;
         margin-bottom: -5px;
         font-family: 'Playfair Display', serif;
-        font-size: 25px;
+        font-size: 35px; /* Aumentado de 25px a 35px */
         color: #EDF2F4;
     }
-
-    /*.ulHeader,
-    .liHeader {
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        margin-right: 30px;
-    } */
 
     .ulHeader {
         list-style-type: none;
         margin: 0;
         font-family: 'Lato', sans-serif;
-
         padding: 0;
         display: flex;
         align-items: center; /* Alinea verticalmente los elementos del menú con la imagen */
     }
-
+    
     .liHeader {
         margin-right: 20px; /* Ajusta el margen entre elementos del menú */
     }
-
+    
     .liHeader:last-child {
         margin-right: 0; /* Quita el margen derecho del último elemento del menú */
     }
     .liHeader a {
         text-decoration: none;
-        color: #EDF2F4;
+        color: #EDF2F4 !important;
         opacity: 0.8;
         transition: color 1s, opacity 0.5s;
+        font-size: 15px; /* Añadido para aumentar el tamaño de la fuente */
+        letter-spacing: 2px; /* Añadido para agregar espacio entre las letras */
     }
 
     .liHeader a:hover {
@@ -284,11 +277,60 @@ h2 {
         border-radius: 50%; /* Hace la imagen redonda */
         margin-left: 10px; /* Añade espacio a la izquierda de la imagen */
     }
-
 }
 
+
+/* ----------------------------------------------------------------------------- */
+/****** ESTILOS DEL HEADER PARA PANTALLAS MEDIASNAS DE ENTRE (540 - 1730) *******/
+@media (min-width: 540px) and (max-width: 1730px) {
+    .contenedorHeader {
+        padding: 12px 20px; /* Añadido espacio a la izquierda y a la derecha */
+        justify-content: space-between;
+    }
+
+    .imgHeader {
+        margin-right: 0;
+        width: 100px;
+    }
+
+    .h1Header {
+        margin-left: 0;
+        font-size: 20px;
+    }
+
+    .ulHeader {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 60px; /* Añadido espacio a la izquierda y a la derecha */
+        padding-top: 30px;
+    }
+
+    .liHeader {
+        margin-right: 0;
+        margin-bottom: 10px;
+        margin-right: 10px; /* Ajusta el margen entre elementos del menú */
+
+    }
+
+    .liHeader a {
+        text-decoration: none;
+        color: #EDF2F4 !important;
+        opacity: 0.8;
+        transition: color 1s, opacity 0.5s;
+        font-size: 13px; /* Añadido para aumentar el tamaño de la fuente */
+        letter-spacing: 2px; /* Añadido para agregar espacio entre las letras */
+    }
+
+    .userImage {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+
 /* ---------------------------------------------------- */
-/* Cuando la pantalla tiene un ancho máximo de 540px, oculta los elementos */
+/*** CUANDO LA PANTALLA TIENE UN ANCHO MAXIMO DE 540PX, OCULTA LOS ELEMENTOS DEL HEADER ***/
 @media (max-width: 540px) {
     
     .h1Header,
@@ -308,7 +350,7 @@ h2 {
 
 
 /* ---------------------------------------------------- */
-/* INDEX.PHP */
+/********************    INDEX.PHP    ******************/
 .bodyIndex {
     margin: 0;
     padding: 0;
