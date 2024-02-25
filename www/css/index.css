@@ -128,7 +128,7 @@ h1 {
     display: none !important; /* Oculta el footer */
 }
 
-/* Cuando la pantalla tiene un ancho máximo de 500px, y el footer tiene la clase "hidden", se muestra */
+/* Cuando la pantalla tiene un ancho máximo de 540px, y el footer tiene la clase "hidden", se muestra */
 @media (max-width: 540px) {
     [data-role="footer"].hidden {
         display: block !important; /* Muestra el footer */
@@ -281,7 +281,7 @@ h2 {
 
 
 /* ----------------------------------------------------------------------------- */
-/****** ESTILOS DEL HEADER PARA PANTALLAS MEDIASNAS DE ENTRE (540 - 1730) *******/
+/****** ESTILOS DEL HEADER PARA PANTALLAS MEDIANAS DE ENTRE (540 - 1730) *******/
 @media (min-width: 540px) and (max-width: 1730px) {
     .contenedorHeader {
         padding: 12px 20px; /* Añadido espacio a la izquierda y a la derecha */
@@ -330,8 +330,8 @@ h2 {
 
 
 /* ---------------------------------------------------- */
-/*** CUANDO LA PANTALLA TIENE UN ANCHO MAXIMO DE 540PX, OCULTA LOS ELEMENTOS DEL HEADER ***/
-@media (max-width: 540px) {
+/*** CUANDO LA PANTALLA TIENE UN ANCHO MAXIMO DE 530PX, OCULTA LOS ELEMENTOS DEL HEADER ***/
+@media (max-width: 530px) {
     
     .h1Header,
     .ulHeader,
