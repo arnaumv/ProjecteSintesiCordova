@@ -1,0 +1,66 @@
+/********************** ESTILOS HEADER PARA UNA PANTALLA COMPLETA DE PC *************************/
+@media (min-width: 540px) {
+    .contenedorHeader {
+        padding: 27px 0 19px 200px;
+        justify-content: flex-start;
+        
+    }
+
+    .imgHeader {
+        margin-right: 1100px;
+    }
+
+    .imgHeader:hover {
+        transition-duration: 3s;
+        transform: scale(1.4); /* Cambiado de rotate(360deg) a scale(1.2) */
+    }
+
+    .h1Header {
+        margin-left: 30px;
+        margin-bottom: -5px;
+        font-family: 'Playfair Display', serif;
+        font-size: 35px; /* Aumentado de 25px a 35px */
+        color: #EDF2F4;
+    }
+
+    .ulHeader {
+        list-style-type: none;
+        margin: 0;
+        font-family: 'Lato', sans-serif;
+        padding: 0;
+        display: flex;
+        align-items: center; /* Alinea verticalmente los elementos del menú con la imagen */
+    }
+    
+    .liHeader {
+        margin-right: 20px; /* Ajusta el margen entre elementos del menú */
+    }
+    
+    .liHeader:last-child {
+        margin-right: 0; /* Quita el margen derecho del último elemento del menú */
+    }
+    .liHeader a {
+        text-decoration: none;
+        color: #EDF2F4 !important;
+        font-family: 'Playfair Display', serif;
+
+        opacity: 0.8;
+        transition: color 1s, opacity 0.5s;
+        font-size: 15px; /* Añadido para aumentar el tamaño de la fuente */
+        letter-spacing: 2px; /* Añadido para agregar espacio entre las letras */
+    }
+
+    .liHeader a:hover {
+        color: white;
+        opacity: 1;
+    }
+
+    .userImage {
+        width: 40px; /* Ajusta como necesites */
+        height: 40px; /* Asegúrate de que sea igual al ancho para mantener la imagen redonda */
+        border-radius: 50%; /* Hace la imagen redonda */
+        margin-left: 10px; /* Añade espacio a la izquierda de la imagen */
+    }
+
+    
+}

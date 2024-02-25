@@ -184,7 +184,7 @@ h2 {
 /********************* HEADER.PHP **********************/
 .contenedorHeader {
     width: 100%;
-    padding: 23px 0;
+    padding: 27px 0 19px 260px;
     background-color: rgba(43, 45, 66, 0.9);
     color: #EDF2F4;
     display: flex;
@@ -193,7 +193,8 @@ h2 {
     top: 0;
     left: 0;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+
 
     transition: transform 0.1s ease;
     z-index: 9999;
@@ -216,136 +217,34 @@ h2 {
 }
 
 
-/* ----------------------------------------------------------------------------- */
-/********************** ESTILOS PARA UNA PANTALLA DE PC *************************/
-@media (min-width: 540px) {
-    .contenedorHeader {
-        padding: 27px 0 19px 200px;
-        justify-content: flex-start;
-    }
 
-    .imgHeader {
-        margin-right: 1100px;
-    }
-
-    .imgHeader:hover {
-        transition-duration: 3s;
-        transform: scale(1.4); /* Cambiado de rotate(360deg) a scale(1.2) */
-    }
-
-    .h1Header {
-        margin-left: 30px;
-        margin-bottom: -5px;
-        font-family: 'Playfair Display', serif;
-        font-size: 35px; /* Aumentado de 25px a 35px */
-        color: #EDF2F4;
-    }
-
-    .ulHeader {
-        list-style-type: none;
-        margin: 0;
-        font-family: 'Lato', sans-serif;
-        padding: 0;
-        display: flex;
-        align-items: center; /* Alinea verticalmente los elementos del menú con la imagen */
-    }
-    
-    .liHeader {
-        margin-right: 20px; /* Ajusta el margen entre elementos del menú */
-    }
-    
-    .liHeader:last-child {
-        margin-right: 0; /* Quita el margen derecho del último elemento del menú */
-    }
-    .liHeader a {
-        text-decoration: none;
-        color: #EDF2F4 !important;
-        opacity: 0.8;
-        transition: color 1s, opacity 0.5s;
-        font-size: 15px; /* Añadido para aumentar el tamaño de la fuente */
-        letter-spacing: 2px; /* Añadido para agregar espacio entre las letras */
-    }
-
-    .liHeader a:hover {
-        color: white;
-        opacity: 1;
-    }
-
-    .userImage {
-        width: 40px; /* Ajusta como necesites */
-        height: 40px; /* Asegúrate de que sea igual al ancho para mantener la imagen redonda */
-        border-radius: 50%; /* Hace la imagen redonda */
-        margin-left: 10px; /* Añade espacio a la izquierda de la imagen */
-    }
+.ulHeader {
+    list-style-type: none;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    padding: 0;
+    display: flex;
+    padding-left: 990px;
+    align-items: center; /* Alinea verticalmente los elementos del menú con la imagen */
 }
 
-
-/* ----------------------------------------------------------------------------- */
-/****** ESTILOS DEL HEADER PARA PANTALLAS MEDIANAS DE ENTRE (540 - 1730) *******/
-@media (min-width: 540px) and (max-width: 1730px) {
-    .contenedorHeader {
-        padding: 12px 20px; /* Añadido espacio a la izquierda y a la derecha */
-        justify-content: space-between;
-    }
-
-    .imgHeader {
-        margin-right: 0;
-        width: 100px;
-    }
-
-    .h1Header {
-        margin-left: 0;
-        font-size: 20px;
-    }
-
-    .ulHeader {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-        padding: 0 60px; /* Añadido espacio a la izquierda y a la derecha */
-        padding-top: 30px;
-    }
-
-    .liHeader {
-        margin-right: 0;
-        margin-bottom: 10px;
-        margin-right: 10px; /* Ajusta el margen entre elementos del menú */
-
-    }
-
-    .liHeader a {
-        text-decoration: none;
-        color: #EDF2F4 !important;
-        opacity: 0.8;
-        transition: color 1s, opacity 0.5s;
-        font-size: 13px; /* Añadido para aumentar el tamaño de la fuente */
-        letter-spacing: 2px; /* Añadido para agregar espacio entre las letras */
-    }
-
-    .userImage {
-        width: 35px;
-        height: 35px;
-    }
+.liHeader {
+    margin-right: 20px; /* Ajusta el margen entre elementos del menú */
 }
 
-
-/* ---------------------------------------------------- */
-/*** CUANDO LA PANTALLA TIENE UN ANCHO MAXIMO DE 530PX, OCULTA LOS ELEMENTOS DEL HEADER ***/
-@media (max-width: 530px) {
-    
-    .h1Header,
-    .ulHeader,
-    .liHeader,
-    .liHeader:last-child,
-    .liHeader a,
-    .liHeader a:hover,
-    .userImage {
-        display: none;
-    }
+.liHeader:last-child {
+    margin-right: 0; /* Quita el margen derecho del último elemento del menú */
 }
-/* ---------------------------------------------------- */
+.liHeader a {
+    text-decoration: none;
+    color: #ffffff !important;
+    font-family: 'Playfair Display', serif;
 
-
+    opacity: 0.8;
+    transition: color 1s, opacity 0.5s;
+    font-size: 15px; /* Añadido para aumentar el tamaño de la fuente */
+    letter-spacing: 2px; /* Añadido para agregar espacio entre las letras */
+}
 
 
 
@@ -356,26 +255,7 @@ h2 {
     padding: 0;
 }
 
-.bodyIndex .imagenCabecera {
-    padding: 200px;
-    background-image: url("../img/BANNER1.png");
-}
 
-.imagenCabecera h1 {
-    margin-bottom: -30px;
-    font-family: 'Playfair Display', serif;
-    font-size: 100px;
-    color: #EDF2F4;
-    text-align: center;
-}
-
-.imagenCabecera h2 {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 30px;
-    color: #EDF2F4;
-    text-align: center;
-}
 
 .bodyIndex p {
     font-family: 'Lato', sans-serif;
@@ -404,13 +284,6 @@ h2 {
     box-shadow: 0 0 5px rgba(99, 145, 148, 0.9), 0 0 10px rgba(102, 105, 146, 0.9); /* Iluminación fija */
 }
 
-/* Reducir el tamaño de las imágenes en pantallas más pequeñas */
-@media (max-width: 768px) {
-    .circulosExplicativos img {
-        width: 200px;
-        height: 200px;
-    }
-}
 
 .circulosExplicativos p {
     margin: 10px 0 150px 0;
@@ -421,28 +294,34 @@ h2 {
     width: 100%;
 }
 
-.cuadradoExplicativos {
+.contenedorInfo {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center; /* Agregado para centrar el contenido */
-}
-.circulosExplicativos p {
-    margin: 10px 0 150px 0;
-    text-align: center;
-    color: #2B2D42;
-    overflow: visible;
-    white-space: normal;
-    width: 100%;
+    margin: 0 0 150px 0;
 }
 
-.cuadradoExplicativos {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; /* Agregado para centrar el contenido */
+.textoExplicativo {
+    /* padding: 20px 70px 0 70px; */
+    /* background-color: #2B2D42; */
     
+ }
+ 
+.textoExplicativo p {
+    font-size: 30px !important; /* Aumentado de 20px a 30px */
+    color: white;
+    text-align: left;
 }
+
+
+
+.cuadradoExplicativos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; /* Agregado para centrar el contenido */
+}
+
 
 .cuadradoExplicativos div {
     text-align: center;
@@ -481,17 +360,14 @@ h2 {
     margin: 20px auto; /* Centrado y ajustado el margen según tus necesidades */
 }
 
+
+
 #mapa {
     width: 100%;
     height: 600px; /* Ajusta la altura según tus preferencias */
 }
 
-.contenedorInfo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 0 150px 0;
-}
+
 
 .imgExplicativo {
     width: 1500px;
@@ -502,17 +378,13 @@ h2 {
     z-index: 99;
 }
 
-.textoExplicativo {
-   /* padding: 20px 70px 0 70px; */
-   /* background-color: #2B2D42; */
-   
+.contenedorTexto {
+    margin: 0 150px; /* Agrega margen a ambos lados */
+    padding: 10px 0 50px 0;
+    /*background-color: #2B2D42;  */
+    border-radius: 10px; /* Redondea las esquinas */
 }
 
-.textoExplicativo p {
-    font-size: 30px !important; /* Aumentado de 20px a 30px */
-    color: white;
-    text-align: left;
-}
 
 #buttontextoExplicativo {
     background: linear-gradient(45deg, #EF233C 50%, #D80032 50%);
@@ -582,6 +454,7 @@ h2 {
     font-size: 20px;
     color: #EDF2F4;
     transition: background-position 1s, color 1s;
+    text-decoration: none; /* Agregado para eliminar el subrayado */
 }
 
 #buttonFinalIndex:hover {
@@ -589,9 +462,476 @@ h2 {
     color: #EDF2F4;
 }
 
-.contenedorTexto {
-    margin: 0 150px; /* Agrega margen a ambos lados */
-    padding: 10px 0 50px 0;
-    /*background-color: #2B2D42;  */
-    border-radius: 10px; /* Redondea las esquinas */
+
+/* ---------------------------------------------------------------------------------------------*/
+/********************** ESTILOS HEADER PARA UNA PANTALLA COMPLETA DE PC *************************/
+
+
+
+
+
+/* ----------------------------------------------------------------------------- */
+/****** ESTILOS DEL HEADER PARA PANTALLAS de ENTRE (540 - 1730) *******/
+@media (min-width: 540px) and (max-width: 1730px) {
+
+    /********************    HEADER.PHP    ******************/
+    
+    .contenedorHeader {
+        padding: 12px 20px; 
+        justify-content: space-between;
+    }
+
+    .imgHeader {
+        margin-right: 0;
+        width: 100px;
+    }
+
+    .h1Header {
+        margin-left: 0;
+        font-size: 20px;
+    }
+
+    .ulHeader {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 60px; /* Añadido espacio a la izquierda y a la derecha */
+        padding-top: 30px;
+    }
+
+    .liHeader {
+        margin-right: 0;
+        margin-bottom: 10px;
+        margin-right: 10px; /* Ajusta el margen entre elementos del menú */
+    }
+
+    .liHeader a {
+        text-decoration: none;
+        color: #EDF2F4 !important;
+        opacity: 0.8;
+        transition: color 1s, opacity 0.5s;
+        font-size: 13px; /* Añadido para aumentar el tamaño de la fuente */
+        letter-spacing: 2px; /* Añadido para agregar espacio entre las letras */
+    }
+
+    .userImage {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .bodyIndex {
+        margin: 0;
+        padding: 0;
+    }
+
+
+
+    /********************    INDEX    ******************/
+        
+    .bodyIndex p {
+        font-family: 'Lato', sans-serif;
+        font-size: 19px;
+        /*color: #EDF2F4;*/
+        text-align: justify;
+    }
+    .circulosExplicativos {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .circulosExplicativos div {
+        text-align: center;
+        width: 300px;
+    }
+
+    .circulosExplicativos img {
+        width: 200px;
+        height: 200px;
+        border: 4px solid rgba(59, 78, 94, 0.589); /* Color de borde fijo */
+        border-radius: 50%;
+        margin-top: 150px;
+        box-shadow: 0 0 5px rgba(99, 145, 148, 0.9), 0 0 10px rgba(102, 105, 146, 0.9); /* Iluminación fija */
+    }
+
+ 
+    .circulosExplicativos p {
+        margin: 10px 0 150px 0;
+        text-align: center;
+        color: #2B2D42;
+        overflow: visible;
+        white-space: normal;
+        width: 100%;
+    }
+
+   .contenedorInfo {
+        flex-direction: column; /* Cambia la dirección de los elementos a columna */
+        margin: 0 -100px 100px -100px; /* Reduce el margen inferior */
+    }
+
+    .textoExplicativo {
+        padding: 10px 35px 0 35px; /* Reduce el padding */
+    }
+
+    
+
+    .cuadradoExplicativos {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center; /* Agregado para centrar el contenido */
+        margin-left: -60px;
+    }
+
+
+    .cuadradoExplicativos div {
+        text-align: center;
+        width: 180px;
+        padding-left: -100px;
+        
+    }
+
+    .cuadradoExplicativos img {
+        width: 230px;
+        height: 230px;
+        border-radius: 20%; 
+        margin-top: 50px;
+        box-shadow: 0 0 5px rgba(99, 145, 148, 0.9), 0 0 10px rgba(102, 105, 146, 0.9); 
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+        margin-bottom: -30px;
+    }
+
+    .cuadradoExplicativos img:hover {
+        transform: scale(1.1); 
+        filter: brightness(1.1); 
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.726); 
+    }
+
+    .cuadradoExplicativos p {
+        margin: 10px 0 150px 0;
+        text-align: center;
+        color: #2B2D42;
+        overflow: visible;
+        white-space: normal;
+        width: 100%;
+    }
+
+
+    .separador {
+        border-top: 1px solid #000; /* Cambia el color según tus necesidades */
+        width: 58%; /* Reducido al 80% para dejar espacio en los lados */
+        margin: 20px auto; 
+    }
+        
+
+    #mapa {
+        margin-top: -30px; /* Añadido margen superior */
+        width: 680px;
+        height: 400px; /* Reduce la altura para pantallas de tamaño mediano */
+    }
+  
+
+        
+    #buttontextoExplicativo {
+        background: linear-gradient(45deg, #EF233C 50%, #D80032 50%);
+        background-size: 200% 200%;
+        background-position: 100%;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        padding: 5px;
+        font-family: 'Lato', sans-serif;
+        font-size: 15px;
+        color: #EDF2F4;
+        transition: background-position 1s, color 1s;
+        margin-left: 348px;
+        display: inline-block;
+    }
+
+    #buttontextoExplicativo:hover {
+        background-position: 0%;
+        color: #EDF2F4;
+    }
+
+    .textoFinal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+        max-width: 950px;
+        margin: 0 auto;
+    }
+
+    .textoFinal h2 {
+        text-align: center;
+        line-height: 45px;
+        font-size: 45px !important;
+    }
+
+    .textoFinal p {
+        text-align: justify!important;
+        line-height: 20px;
+        font-size: 17px !important;
+    }
+
+    .textoFinal h2 {
+        margin: 0;
+        padding: 0;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 50px;
+        color: #8D99AE;
+    }
+
+    .textoFinal p {
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+        color: #2B2D42;
+        text-align: center;
+    }
+
+    #buttonFinalIndex {
+        background: linear-gradient(45deg, #EF233C 50%, #D80032 50%);
+        background-size: 200% 200%;
+        background-position: 100%;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 150px;
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+        color: #EDF2F4;
+        transition: background-position 1s, color 1s;
+        text-decoration: none; /* Agregado para eliminar el subrayado */
+    }
+    #buttonFinalIndex:hover {
+        background-position: 0%;
+        color: #EDF2F4;
+    }
+
+ 
 }
+
+
+/* ----------------------------------------------------------------------------- */
+/***************** ESTILOS PARA PANTALLAS DE MOVILES (300 - 540px) **************/
+/* ----------------------------------------------------------------------------*/
+
+@media (min-width: 300px) and (max-width: 540px) {
+
+    /********************    HEADER    ******************/
+
+    .contenedorHeader {
+        display: flex; /* Agregado para habilitar Flexbox */
+        align-items: center; /* Centra los elementos hijos verticalmente */
+        justify-content: center; /* Centra los elementos hijos horizontalmente */
+        padding: 30px 15px;
+    }
+    
+    .imgHeader {
+        margin-right: 0;
+        width: 150px;
+    }
+
+    .h1Header,
+    .ulHeader,
+    .liHeader,
+    .liHeader:last-child,
+    .liHeader a,
+    .liHeader a:hover,
+    .userImage {
+        display: none;
+    }
+
+    /********************    INDEX    ******************/
+
+    .bodyIndex p {
+        font-family: 'Lato', sans-serif;
+        font-size: 19px;
+        /*color: #EDF2F4;*/
+        text-align: justify;
+    }
+    .circulosExplicativos {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .circulosExplicativos div {
+        text-align: center;
+        width: 300px;
+    }
+
+    .circulosExplicativos img {
+        width: 200px;
+        height: 200px;
+        border: 4px solid rgba(59, 78, 94, 0.589); /* Color de borde fijo */
+        border-radius: 50%;
+        margin-top: 150px;
+        box-shadow: 0 0 5px rgba(99, 145, 148, 0.9), 0 0 10px rgba(102, 105, 146, 0.9); /* Iluminación fija */
+    }
+
+ 
+    .circulosExplicativos p {
+        margin: 10px 0 150px 0;
+        text-align: center;
+        color: #2B2D42;
+        overflow: visible;
+        white-space: normal;
+        width: 100%;
+    }
+
+   .contenedorInfo {
+        flex-direction: column; /* Cambia la dirección de los elementos a columna */
+        margin: 0 -100px 100px -100px; /* Reduce el margen inferior */
+    }
+
+    .textoExplicativo {
+        padding: 10px 35px 0 35px; /* Reduce el padding */
+    }
+
+    
+
+    .cuadradoExplicativos {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center; /* Agregado para centrar el contenido */
+        margin-left: -60px;
+    }
+
+
+    .cuadradoExplicativos div {
+        text-align: center;
+        width: 180px;
+        padding-left: -100px;
+        
+    }
+
+    .cuadradoExplicativos img {
+        width: 230px;
+        height: 230px;
+        border-radius: 20%; 
+        margin-top: 50px;
+        box-shadow: 0 0 5px rgba(99, 145, 148, 0.9), 0 0 10px rgba(102, 105, 146, 0.9); 
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+        margin-bottom: -30px;
+    }
+
+    .cuadradoExplicativos img:hover {
+        transform: scale(1.1); 
+        filter: brightness(1.1); 
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.726); 
+    }
+
+    .cuadradoExplicativos p {
+        margin: 10px 0 150px 0;
+        text-align: center;
+        color: #2B2D42;
+        overflow: visible;
+        white-space: normal;
+        width: 100%;
+    }
+
+
+    .separador {
+        border-top: 1px solid #000; /* Cambia el color según tus necesidades */
+        width: 58%; /* Reducido al 80% para dejar espacio en los lados */
+        margin: 20px auto; 
+    }
+        
+
+    #mapa {
+        margin-top: -30px; /* Añadido margen superior */
+        width: 680px;
+        height: 400px; /* Reduce la altura para pantallas de tamaño mediano */
+    }
+  
+
+        
+    #buttontextoExplicativo {
+        background: linear-gradient(45deg, #EF233C 50%, #D80032 50%);
+        background-size: 200% 200%;
+        background-position: 100%;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        padding: 5px;
+        font-family: 'Lato', sans-serif;
+        font-size: 15px;
+        color: #EDF2F4;
+        transition: background-position 1s, color 1s;
+        margin-left: 348px;
+        display: inline-block;
+    }
+
+    #buttontextoExplicativo:hover {
+        background-position: 0%;
+        color: #EDF2F4;
+    }
+
+    .textoFinal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+        max-width: 950px;
+        margin: 0 auto;
+    }
+
+    .textoFinal h2 {
+        text-align: center;
+        line-height: 45px;
+        font-size: 45px !important;
+    }
+
+    .textoFinal p {
+        text-align: justify!important;
+        line-height: 20px;
+        font-size: 17px !important;
+    }
+
+    .textoFinal h2 {
+        margin: 0;
+        padding: 0;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 50px;
+        color: #8D99AE;
+    }
+
+    .textoFinal p {
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+        color: #2B2D42;
+        text-align: center;
+    }
+
+    #buttonFinalIndex {
+        background: linear-gradient(45deg, #EF233C 50%, #D80032 50%);
+        background-size: 200% 200%;
+        background-position: 100%;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 150px;
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+        color: #EDF2F4;
+        transition: background-position 1s, color 1s;
+        text-decoration: none; /* Agregado para eliminar el subrayado */
+    }
+    #buttonFinalIndex:hover {
+        background-position: 0%;
+        color: #EDF2F4;
+    }
+
+
+}
+/* ---------------------------------------------------- */
+
+
+
+
+
+
+
+
