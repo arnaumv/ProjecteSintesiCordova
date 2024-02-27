@@ -743,10 +743,16 @@ h2 {
     }
 
     /********************    INDEX    ******************/
-
+    h2 {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #3a3f47;
+        font-size: 23px;
+        text-align: center;
+       /* padding-left: 410px; /* Añadido para agregar espacio a la izquierda */
+    }
     .bodyIndex p {
         font-family: 'Lato', sans-serif;
-        font-size: 19px;
+        font-size: 15px;
         /*color: #EDF2F4;*/
         text-align: justify;
     }
@@ -763,8 +769,8 @@ h2 {
     }
 
     .circulosExplicativos img {
-        width: 200px;
-        height: 200px;
+        width: 120px;
+        height: 120px;
         border: 4px solid rgba(59, 78, 94, 0.589); /* Color de borde fijo */
         border-radius: 50%;
         margin-top: 150px;
@@ -783,7 +789,7 @@ h2 {
 
    .contenedorInfo {
         flex-direction: column; /* Cambia la dirección de los elementos a columna */
-        margin: 0 -100px 100px -100px; /* Reduce el margen inferior */
+        margin: -100px -160px 0px -160px; /* Reduce el margen inferior */
     }
 
     .textoExplicativo {
@@ -793,29 +799,23 @@ h2 {
     
 
     .cuadradoExplicativos {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center; /* Agregado para centrar el contenido */
-        margin-left: -60px;
+        display: flex; /* Esto hará que los divs se comporten como elementos flexibles */
+        flex-direction: column; /* Esto permitirá que los divs se envuelvan en múltiples filas */
     }
-
-
+    
     .cuadradoExplicativos div {
-        text-align: center;
-        width: 180px;
-        padding-left: -100px;
-        
-    }
+        flex: 0 0 50%; /* Esto hará que los divs se muestren en dos columnas */
+        max-width: 50%; /* Esto limitará el ancho máximo al 50% */
+        box-sizing: border-box; /* Esto asegurará que el padding y el border no aumenten el ancho total del div */
+        padding: 0 10px; /* Esto agregará un padding a los lados de cada div, reduciendo el espacio entre las imágenes */
 
+    }
+    
     .cuadradoExplicativos img {
-        width: 230px;
-        height: 230px;
-        border-radius: 20%; 
-        margin-top: 50px;
-        box-shadow: 0 0 5px rgba(99, 145, 148, 0.9), 0 0 10px rgba(102, 105, 146, 0.9); 
-        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
-        margin-bottom: -30px;
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+        margin-bottom: 10px;
     }
 
     .cuadradoExplicativos img:hover {
@@ -842,8 +842,8 @@ h2 {
         
 
     #mapa {
-        margin-top: -30px; /* Añadido margen superior */
-        width: 680px;
+        margin-top: -10px; /* Añadido margen superior */
+        width: 370px;
         height: 400px; /* Reduce la altura para pantallas de tamaño mediano */
     }
   
@@ -880,14 +880,14 @@ h2 {
 
     .textoFinal h2 {
         text-align: center;
-        line-height: 45px;
+        line-height: 35px;
         font-size: 45px !important;
     }
 
     .textoFinal p {
         text-align: justify!important;
         line-height: 20px;
-        font-size: 17px !important;
+        font-size: 15px !important;
     }
 
     .textoFinal h2 {
@@ -914,7 +914,7 @@ h2 {
         padding: 20px;
         margin-bottom: 150px;
         font-family: 'Lato', sans-serif;
-        font-size: 20px;
+        font-size: 15px;
         color: #EDF2F4;
         transition: background-position 1s, color 1s;
         text-decoration: none; /* Agregado para eliminar el subrayado */
